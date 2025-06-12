@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root{
+  background-color: #F4F4F4;
+}
+
+@theme inline{
+  --color-primary: #433BFF;
+  --color-secondary: #3173D2;
+  --color-bg-lightgray: #F4F4F4;
+}
+
+@layer components{
+  .home-section{
+    @apply container mx-auto flex items-center h-screen flex-col justify-center md:flex-row md:justify-between 
+  }
+}
