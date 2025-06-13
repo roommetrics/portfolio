@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "motion/react"
 const navItems = [
     // Navbar Items
     { label: 'Home', href: '/' },
-    { label: 'Dienstleistungen', href: '/offers' },
+    { label: 'Dienstleistungen', href: '/services' },
     { label: 'Projekte', 'href': '/projects' },
     { label: 'About', href: '/about' }
 ]
