@@ -14,4 +14,10 @@
   .home-section{
     @apply container mx-auto flex items-center h-screen flex-col justify-center md:flex-row md:justify-between 
   }
+  .header{
+    @apply text-3xl font-bold md:text-4xl
+  }
+  .divide{
+    @apply my-12 h-0.5 border-t-0 bg-black max-lg:mx-4
+  }
 }

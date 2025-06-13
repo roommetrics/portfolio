@@ -52,7 +52,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Trennlinie + Copyright */}
+            {/* Gap + Copyright */}
             <div className="mt-8 border-t pt-4 text-xs text-center text-muted-foreground">
                 © {new Date().getFullYear()} Roommetrics Developments – Alle Rechte vorbehalten
             </div>

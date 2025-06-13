@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from 'lucide-react'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
 
 const navItems = [
@@ -16,13 +16,31 @@ const navItems = [
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setisScrolled] = useState(false);
 
     const toggleMobile = () => {
         setIsOpen(!isOpen);
     }
 
+    const handleScroll = () => {
+        if (window.scrollY > 0) {
+            setisScrolled(true);
+        } else {
+            setisScrolled(false);
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            isScrolled;
+        }
+    }, [])
+
+
     return (
-        <header className="flex justify-between items-center py-4 px-6 w-full fixed z-20">
+        <header className={`flex justify-between items-center py-4 px-6 w-full fixed z-20 rounded-b-lg ${isScrolled && `backdrop-blur-lg`}`} >
             <Link href='/'>
                 <Image src='Icon_Only.svg' alt="Logo" height={50} width={50} />
             </Link>
