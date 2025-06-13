@@ -69,11 +69,11 @@ const Page = () => {
         </div>
       </section>
 
-     {/*  <hr className='divide'/>
+      <hr className='divide'/>
 
       <section className='my-12 flex flex-col mx-4 lg:mx-8 min-h-screen'>
         <SelectedProjects/>
-      </section> */}
+      </section>
     </main>
   )
 }
