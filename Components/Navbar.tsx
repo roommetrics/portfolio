@@ -36,53 +36,52 @@ const Navbar = () => {
     }, [])
 
     return (
-        <motion.header 
+        <motion.header
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className={`flex justify-between items-center py-4 px-6 lg:px-12 w-full fixed top-0 z-50 transition-all duration-300 ${
-                isScrolled 
-                    ? 'bg-white/80 backdrop-blur-xl shadow-lg border-b border-primary/10' 
-                    : 'bg-transparent'
-            }`}
+            className={`flex justify-between items-center py-4 px-6 lg:px-12 w-full fixed top-0 z-50 transition-all duration-300 ${isScrolled
+                ? 'bg-white/80 backdrop-blur-xl shadow-lg border-b border-primary/10'
+                : 'bg-transparent'
+                }`}
         >
             <Link href='/' className="flex items-center space-x-2">
                 <div className="relative">
-                    <Image 
-                        src='/Icon_Only.svg' 
-                        alt="Roommetrics Logo" 
-                        height={45} 
+                    <Image
+                        src='/Icon_Only.svg'
+                        alt="Roommetrics Logo"
+                        height={45}
                         width={45}
                         className="hover:scale-110 transition-transform duration-300"
                     />
                     <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-full blur-md opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <span className="font-bold text-lg bg-gradient-to-r text-primary hidden sm:block">
+                <span className="font-bold text-xl bg-gradient-to-r text-primary hidden sm:block">
                     Roommetrics
                 </span>
             </Link>
 
             <nav className="hidden lg:flex items-center space-x-8">
                 {navItems.map(({ label, href }) => (
-                    <Link 
-                        key={label} 
-                        href={href} 
-                        className="relative text-white hover:text-primary font-medium transition-all duration-300 group"
+                    <Link
+                        key={label}
+                        href={href}
+                        className={`relative hover:text-primary font-medium transition-all duration-300 group text-xl ${isScrolled ? 'text-black' : 'text-white'}`}
                     >
                         {label}
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-500 transition-all duration-300 group-hover:w-full"></span>
                     </Link>
                 ))}
-                <Link 
+                <Link
                     href="/contact"
-                    className="ml-4 px-6 py-2 bg-gradient-to-r from-primary to-purple-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300"
+                    className="ml-4 px-6 py-2 bg-gradient-to-r from-primary to-purple-600 text-white text-xl rounded-full font-medium hover:shadow-lg hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300"
                 >
                     Kontakt
                 </Link>
             </nav>
 
-            <button 
-                className="lg:hidden p-2 rounded-full bg-gradient-to-r from-primary to-purple-600 text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300" 
+            <button
+                className="lg:hidden p-2 rounded-full bg-gradient-to-r from-primary to-purple-600 text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                 onClick={toggleMobile}
             >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -112,7 +111,7 @@ const Navbar = () => {
                             >
                                 <X size={20} />
                             </button>
-                            
+
                             <div className="space-y-6">
                                 {navItems.map(({ label, href }, index) => (
                                     <motion.div
@@ -121,23 +120,23 @@ const Navbar = () => {
                                         animate={{ x: 0, opacity: 1 }}
                                         transition={{ delay: index * 0.1 }}
                                     >
-                                        <Link 
-                                            href={href} 
-                                            onClick={() => setIsOpen(false)} 
+                                        <Link
+                                            href={href}
+                                            onClick={() => setIsOpen(false)}
                                             className="block text-xl font-medium text-gray-700 hover:text-primary transition-colors duration-300 py-2 border-b border-gray-100 hover:border-primary/30"
                                         >
                                             {label}
                                         </Link>
                                     </motion.div>
                                 ))}
-                                
+
                                 <motion.div
                                     initial={{ x: 50, opacity: 0 }}
                                     animate={{ x: 0, opacity: 1 }}
                                     transition={{ delay: navItems.length * 0.1 }}
                                     className="pt-6"
                                 >
-                                    <Link 
+                                    <Link
                                         href="/contact"
                                         onClick={() => setIsOpen(false)}
                                         className="block w-full text-center px-6 py-3 bg-gradient-to-r from-primary to-purple-600 text-white rounded-full font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300"
