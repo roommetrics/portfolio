@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useLayoutEffect, useRef } from 'react'
 import { motion } from 'motion/react'
 
 // Mock components for the animations
