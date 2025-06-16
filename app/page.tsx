@@ -30,7 +30,7 @@ const projects = [
     id: 2,
     title: "Ball der Technik Hollabrunn",
     subtitle: "Themenorientierte Landing Page",
-    description: "Moderne Landing Page für den Ball der Technik Hollabrunn",
+    description: "Moderne Landing Page für den Ball der Technik Hollabrunn. SEO otimiert um die Sichtbarkeit zu erhöhen",
     image: "/projects/bdt.png",
     tech: ["Next.js", "SEO", "TypeScript"],
     color: "from-purple-500 to-pink-600",
@@ -47,7 +47,24 @@ const projects = [
   }
 ];
 
-const ProjectModal = ({ project, isOpen, onClose }) => {
+type Project = {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  tech: string[];
+  color: string;
+  link?: string;
+};
+
+type ProjectModalProps = {
+  project: Project;
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -105,7 +122,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   <div className="mb-8">
                     <h3 className="text-2xl font-semibold text-gray-900 mb-4">Technologien</h3>
                     <div className="flex flex-wrap gap-3">
-                      {project.tech.map((tech, index) => (
+                      {project.tech.map((tech: string, index: number) => (
                         <span
                           key={index}
                           className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium"
@@ -406,8 +423,7 @@ const Page = () => {
                   {projects.map((project, index) => (
                     <motion.div
                       key={project.id}
-                      className="project-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group cursor-pointer"
-                      onClick={() => setSelectedProject(project)}
+                      className="project-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group"
                       whileHover={{ y: -8 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -424,7 +440,7 @@ const Page = () => {
                         </div>
                       </div>
 
-                      <div className="p-4 sm:p-6">
+                      <div className="p-4 sm:p-6 flex flex-col h-full min-h-[220px]">
                         <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
                           {project.description.substring(0, 200)}
                         </p>
@@ -444,6 +460,18 @@ const Page = () => {
                             </span>
                           )}
                         </div>
+
+                        {/* Nur anzeigen, wenn ein Link definiert ist */}
+                        {project.link && (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block px-5 py-2 bg-primary text-white rounded-full font-medium text-sm hover:bg-primary/90 transition"
+                          >
+                            Zur Website
+                          </a>
+                        )}
                       </div>
                     </motion.div>
                   ))}
@@ -507,13 +535,6 @@ const Page = () => {
           <Footer />
         </div>
       </div>
-
-      {/* Project Modal */}
-      <ProjectModal
-        project={selectedProject}
-        isOpen={!!selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
     </>
   )
 }
