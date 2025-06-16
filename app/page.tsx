@@ -1,13 +1,13 @@
 'use client'
 
 import DeveloperAnimation from '@/Components/Animations/DeveloperAnimation';
-import React, { useLayoutEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import React, { useLayoutEffect, useRef } from 'react'
+import { motion } from 'motion/react'
 import WebAnimation from '@/Components/Animations/WebAnimation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { gsap } from "gsap";
-
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import Footer from '@/Components/Footer';
@@ -47,119 +47,8 @@ const projects = [
   }
 ];
 
-type Project = {
-  id: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  image: string;
-  tech: string[];
-  color: string;
-  link?: string;
-};
-
-type ProjectModalProps = {
-  project: Project;
-  isOpen: boolean;
-  onClose: () => void;
-};
-
-const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
-          />
-
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed inset-4 md:inset-8 lg:inset-16 bg-white rounded-3xl z-50 overflow-hidden shadow-2xl"
-          >
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-6 right-6 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors z-10"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-
-            {/* Content */}
-            <div className="h-full overflow-y-auto">
-              {/* Hero Image */}
-              <div className="relative h-64 md:h-80 lg:h-96">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-80`}></div>
-                <div className="absolute bottom-8 left-8 text-white">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-2">{project.title}</h2>
-                  <p className="text-xl opacity-90">{project.subtitle}</p>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-8 md:p-12">
-                <div className="max-w-4xl mx-auto">
-                  <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                    {project.description}
-                  </p>
-
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">Technologien</h3>
-                    <div className="flex flex-wrap gap-3">
-                      {project.tech.map((tech: string, index: number) => (
-                        <span
-                          key={index}
-                          className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-4">Herausforderungen</h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        Komplexe Anforderungen erforderten innovative Lösungsansätze und modernste Technologien für optimale Performance und Benutzererfahrung.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-4">Ergebnisse</h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        Erfolgreiche Umsetzung mit verbesserter User Experience, erhöhten Conversion-Raten und positiver Kundenfeedbacks.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
-  );
-};
-
 const Page = () => {
   const smootherRef = useRef<ScrollSmoother | null>(null);
-  const [selectedProject, setSelectedProject] = useState(null);
 
   useLayoutEffect(() => {
     smootherRef.current = ScrollSmoother.create({
@@ -172,7 +61,7 @@ const Page = () => {
     return () => {
       smootherRef.current?.kill();
     }
-  })
+  }, [])
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -300,7 +189,7 @@ const Page = () => {
     <>
       <div id='smooth-wrapper' className="bg-bg-lightgray">
         <div id='smooth-content'>
-          <main className='pt-8'>
+          <main className='pt-20 lg:pt-24'>
             {/* Hero Section - Responsive */}
             <section id='hero' className='min-h-screen w-full relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-primary/5 flex justify-center md:mt-12'>
               <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-white/20"></div>
@@ -420,7 +309,7 @@ const Page = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
-                  {projects.map((project, index) => (
+                  {projects.map((project) => (
                     <motion.div
                       key={project.id}
                       className="project-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group"
@@ -428,10 +317,12 @@ const Page = () => {
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="relative h-48 sm:h-56 overflow-hidden">
-                        <img
+                        <Image
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-700"
+                          sizes="(max-width: 768px) 100vw, 33vw"
                         />
                         <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-60 group-hover:opacity-40 transition-opacity duration-300`}></div>
                         <div className="absolute bottom-4 left-4 text-white">
@@ -531,7 +422,6 @@ const Page = () => {
               </div>
             </section>
           </main>
-
           <Footer />
         </div>
       </div>
