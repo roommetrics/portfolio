@@ -12,7 +12,7 @@ const HeroSection = () => (
                 transition={{ duration: 0.8, scale: { type: 'spring', visualDuration: 0.8, bounce: 0.3 } }}
                 className="space-y-6"
             >
-                <h1 className='text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase leading-tight'>
+                <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-tight'>
                     <span className="bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent">
                         Roommetrics
                     </span>
