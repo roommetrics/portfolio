@@ -17,12 +17,6 @@ const WebAnimation = () => (
 );
 
 const Page = () => {
-  const smootherRef = useRef(null);
-
-  useLayoutEffect(() => {
-    // Mock GSAP animations would go here
-    // For this example, we'll use CSS animations instead
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
