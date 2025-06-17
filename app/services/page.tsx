@@ -277,8 +277,6 @@ const Page = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              onMouseEnter={() => setHoveredService(service.id)}
-              onMouseLeave={() => setHoveredService(null)}
               whileHover={{ y: -8 }}
             >
               <div className={`relative h-full p-6 lg:p-8 bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm border ${service.borderColor} rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-opacity-60`}>
@@ -330,13 +328,13 @@ const Page = () => {
                     </div>
 
                     <Link href='/contact'>
-                    <motion.button
-                      className={`px-4 py-2 bg-gradient-to-r ${service.gradient} text-white text-sm font-semibold rounded-lg hover:shadow-lg transition-all duration-300`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Anfragen
-                    </motion.button>
+                      <motion.button
+                        className={`px-4 py-2 bg-gradient-to-r ${service.gradient} text-white text-sm font-semibold rounded-lg hover:shadow-lg transition-all duration-300`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Anfragen
+                      </motion.button>
                     </Link>
                   </div>
                 </div>
