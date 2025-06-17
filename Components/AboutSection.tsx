@@ -181,7 +181,7 @@ const AboutSection = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className='min-h-screen w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8'>
+    <section id='about' ref={sectionRef} className='min-h-screen w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8'>
       {/* Title */}
       <div ref={titleRef} className="text-center mb-12 sm:mb-16 lg:mb-20">
         <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 uppercase leading-tight'>

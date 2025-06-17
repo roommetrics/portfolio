@@ -8,8 +8,8 @@ import { AnimatePresence, motion } from "motion/react"
 const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Dienstleistungen', href: '/services' },
-    { label: 'Projekte', href: '/projects' },
-    { label: 'About', href: '/about' }
+    // { label: 'Projekte', href: '/projects' },
+    { label: 'About', href: '/#about' }
 ]
 
 const Navbar = () => {

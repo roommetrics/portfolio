@@ -24,8 +24,8 @@ const Footer = () => {
         company: [
             { label: 'Home', href: '/' },
             { label: 'Dienstleistungen', href: '/services' },
-            { label: 'Projekte', href: '/projects' },
-            { label: 'About', href: '/about' }
+            // { label: 'Projekte', href: '/projects' },
+            { label: 'About', href: '/#about' }
         ],
         legal: [
             { label: 'Kontakt', href: '/contact' },
@@ -180,7 +180,7 @@ const Footer = () => {
                                 <span className="font-semibold text-gray-700"> Roommetrics Developments</span>
                             </p>
                             <p className="text-gray-400 text-xs mt-1">
-                                Alle Rechte vorbehalten · Made with ❤️ in Austria
+                                Alle Rechte vorbehalten
                             </p>
                         </div>
                     </div>

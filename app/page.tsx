@@ -22,7 +22,7 @@ const Page = () => {
           <ElegantDivider />
           <ProjectSection />
           <ElegantDivider />
-          <AboutSection />
+          <AboutSection/>
         </main>
       </div>
     </div>
