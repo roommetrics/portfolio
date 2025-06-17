@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 
