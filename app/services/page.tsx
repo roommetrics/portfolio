@@ -6,7 +6,6 @@ import Link from 'next/link'
 const Page = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLDivElement>(null)
-  const [hoveredService, setHoveredService] = useState<number | null>(null)
 
   const services = [
     {
