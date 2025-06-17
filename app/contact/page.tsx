@@ -102,7 +102,7 @@ const Page = () => {
     ]
 
     return (
-        <section ref={sectionRef} className='min-h-screen w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950'>
+        <section ref={sectionRef} className='min-h-screen w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-x-hidden'>
             <style jsx>{`
         @keyframes fadeInUp {
           from {
