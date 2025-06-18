@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
-import {Analytics} from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/next';
 
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
@@ -29,9 +29,9 @@ export default function RootLayout({
       <body
         className={`${ibmPlexSans.variable} antialiased`}
       >
-        <Analytics/>
         <Navbar/>
         {children}
+        <Analytics/>
         <Footer/>
       </body>
     </html>
