@@ -15,7 +15,7 @@ const ProjectSection = () => {
       title: "VinoVenture",
       description: "Ein moderner Webshop für Weinliebhaber mit interaktivem Quiz und nahtloser Zahlungsintegration.",
       image: "/projects/vinoventure.png",
-      tech: ["React", "Tailwindcss", "SQLite", "Stripe"],
+      tech: ["React", "Tailwindcss", "MYSQL", "Stripe"],
       url: "https://vino-venture.com"
     },
     {

@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'motion/react'
 import WebAnimation from './Animations/WebAnimation'
+import Link from 'next/link'
 
 const ServicesSection = () => {
   return (
@@ -62,12 +63,15 @@ const ServicesSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-blue-500/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                   {/* Button text */}
+                  <Link href='/services'>
                   <span className="relative z-10 flex items-center gap-2">
                     Mehr erfahren
                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </span>
+                  </Link>
+                  
 
                   {/* Shine effect */}
                   <div className="absolute inset-0 -top-full bg-gradient-to-b from-transparent via-white/20 to-transparent group-hover:top-full transition-all duration-700 transform rotate-12"></div>
