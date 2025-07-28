@@ -28,7 +28,7 @@ const Page = () => {
       id: 2,
       title: "Landing Page Entwicklung",
       description: "Moderne, responsive Landing Pages die konvertieren. Perfekt optimiert für Performance und SEO.",
-      features: ["Responsive Design", "SEO-Optimierung", "Performance-Optimierung", "CMS Integration"],
+      features: ["Responsive Design", "SEO-Optimierung", "Performance-Optimierung"],
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -37,8 +37,8 @@ const Page = () => {
       gradient: "from-blue-500 to-cyan-400",
       bgGradient: "from-blue-500/10 to-cyan-400/10",
       borderColor: "border-blue-500/20",
-      price: "Ab €699",
-      duration: "1-2 Wochen"
+      price: "Ab €500",
+      duration: "48 Stunden"
     },
     {
       id: 3,
@@ -53,7 +53,7 @@ const Page = () => {
       gradient: "from-purple-500 to-pink-400",
       bgGradient: "from-purple-500/10 to-pink-400/10",
       borderColor: "border-purple-500/20",
-      price: "Ab €1.499",
+      price: "Ab €1.600",
       duration: "2-4 Wochen"
     },
     {
@@ -69,7 +69,7 @@ const Page = () => {
       gradient: "from-orange-500 to-red-400",
       bgGradient: "from-orange-500/10 to-red-400/10",
       borderColor: "border-orange-500/20",
-      price: "Ab €1.199",
+      price: "Ab €1.200",
       duration: "1-3 Wochen"
     },
     {
@@ -85,7 +85,7 @@ const Page = () => {
       gradient: "from-indigo-500 to-purple-400",
       bgGradient: "from-indigo-500/10 to-purple-400/10",
       borderColor: "border-indigo-500/20",
-      price: "Ab €799",
+      price: "Ab €800",
       duration: "1-2 Wochen"
     },
     {
@@ -101,7 +101,7 @@ const Page = () => {
       gradient: "from-teal-500 to-cyan-400",
       bgGradient: "from-teal-500/10 to-cyan-400/10",
       borderColor: "border-teal-500/20",
-      price: "Ab €899",
+      price: "Ab €900",
       duration: "1-3 Wochen"
     }
   ]
