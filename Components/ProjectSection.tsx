@@ -32,6 +32,14 @@ const ProjectSection = () => {
       description: "Eine Plattform für Startups, die es Gründern ermöglicht, ihre Projekte zu präsentieren und sich zu vernetzen (Übungsprojekt).",
       image: "/projects/ycdirectory.png",
       tech: ["Next.js", "Tailwindcss", "Postgresql", "Appwrite"]
+    } ,
+    {
+      id: 4,
+      title: "Photox Homepage",
+      description: "Eine moderne Homepage für Fotografen mit ansprechendem Design und Kontaktdaten ",
+      image: "/projects/photox.png",
+      tech: ["Next.js", "Tailwindcss", "framer-motion", "GSAP"],
+      url: "https://photox-portfolio-project-4qbkr21cm-roommetrics-projects.vercel.app/"
     }
   ]
 
