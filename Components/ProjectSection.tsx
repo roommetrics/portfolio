@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react'
 import { motion } from 'motion/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+import Image from 'next/image'
 
 const ProjectSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -32,7 +33,7 @@ const ProjectSection = () => {
       description: "Eine Plattform für Startups, die es Gründern ermöglicht, ihre Projekte zu präsentieren und sich zu vernetzen (Übungsprojekt).",
       image: "/projects/ycdirectory.png",
       tech: ["Next.js", "Tailwindcss", "Postgresql", "Appwrite"]
-    } ,
+    },
     {
       id: 4,
       title: "Photox Homepage",
@@ -67,7 +68,7 @@ const ProjectSection = () => {
       }
     )
 
-    projectRefs.current.forEach((ref, index) => {
+    projectRefs.current.forEach((ref) => {
       if (!ref) return
 
       const tl = gsap.timeline({
@@ -154,9 +155,11 @@ const ProjectSection = () => {
             <div className="w-full lg:flex-1 relative group">
               <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-blue-400/20 p-0.5 sm:p-1">
                 <div className="overflow-hidden rounded-lg sm:rounded-xl">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    width={800}
+                    height={500}
                     className="project-image w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -190,7 +193,7 @@ const ProjectSection = () => {
               </motion.p>
 
               <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start">
-                {project.tech.map((tech, techIndex) => (
+                {project.tech.map((tech) => (
                   <span
                     key={tech}
                     className="tech-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm hover:bg-primary/20 transition-colors duration-300"

@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react'
 import { motion } from 'motion/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+import CalendlyButton from './CalendlyButton'
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -13,10 +14,10 @@ const AboutSection = () => {
   const valueRefs = useRef<(HTMLDivElement | null)[]>([])
 
   const stats = [
-    { number: "100%", label: "Kundenzufriedenheit", icon: "⭐" },
     { number: "5+", label: "Jahre Erfahrung", icon: "⏱️" },
-    { number: "24/7", label: "Support & Betreuung", icon: "🛠️" },
-    { number: "1", label: "Kostenloser Design-Vorschlag", icon: "✅" }
+    { number: "100%", label: "Projekterfolg", icon: "⭐" },
+    { number: "24/7", label: "Support verfügbar", icon: "🛠️" },
+    { number: "€0", label: "Für Erstberatung", icon: "✅" }
   ]
 
   const skills = [
@@ -233,10 +234,10 @@ const AboutSection = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <p className="text-base sm:text-lg lg:text-xl text-white/80 leading-relaxed">
-                Nico Zimmermann ist der Inhaber von Roommetrics Developments. Als erfahrener Full Stack Entwickler mit über 5 Jahren Erfahrung helfe ich Unternehmen dabei, ihre digitale Präsenz zu etablieren und online erfolgreich zu werden.
+                Roommetrics Developments wurde im Juni 2025 von Nico Zimmermann gegründet. Nach seiner Ausbildung an der HTL Hollabrunn folgte er direkt seiner Leidenschaft für moderne Webentwicklung und gründete sein eigenes Unternehmen.
               </p>
               <p className="text-base sm:text-lg text-white/70 leading-relaxed">
-                Mein Fokus liegt auf maßgeschneiderten, modernen Weblösungen, die nicht nur gut aussehen, sondern auch messbare Ergebnisse liefern. Qualität und Kundenzufriedenheit stehen dabei immer im Vordergrund.
+                Mein Ziel ist es, Unternehmen zu helfen, ihren Online-Auftritt zu perfektionieren und Prozesse zu digitalisieren. Mit modernen Technologien und einem Fokus auf Design entwickle ich Webseiten und digitale Lösungen, die Kunden gewinnen, Prozesse vereinfachen und Ihr Business voranbringen.
               </p>
             </motion.div>
 
@@ -324,20 +325,7 @@ const AboutSection = () => {
             <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
               Bereit für Ihren digitalen Durchbruch? Lassen Sie uns gemeinsam eine professionelle Lösung entwickeln, die Ihr Unternehmen voranbringt.
             </p>
-            <motion.a
-              href="/contact"
-              className="group relative inline-flex px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 text-base sm:text-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="relative z-10 flex items-center gap-3">
-                Kostenloses Beratungsgespräch
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </motion.a>
+            <CalendlyButton text='Kostenloses Beratungsgespräch' variant='hero'/>
           </motion.div>
         </div>
       </div>

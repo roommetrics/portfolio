@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
+import CalendlyButton from "./CalendlyButton"
 
 const navItems = [
     { label: 'Home', href: '/' },
@@ -66,18 +67,13 @@ const Navbar = () => {
                     <Link
                         key={label}
                         href={href}
-                        className={`relative hover:text-primary font-medium transition-all duration-300 group text-xl ${isScrolled ? 'text-black' : 'text-white'}`}
+                        className={`relative hover:text-primary font-medium transition-all duration-300 group text-lg ${isScrolled ? 'text-black' : 'text-white'}`}
                     >
                         {label}
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-500 transition-all duration-300 group-hover:w-full"></span>
                     </Link>
                 ))}
-                <Link
-                    href="/contact"
-                    className="ml-4 px-6 py-2 bg-gradient-to-r from-primary to-purple-600 text-white text-xl rounded-full font-medium hover:shadow-lg hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300"
-                >
-                    Kontakt
-                </Link>
+                <CalendlyButton text="Erstgespräch" variant="navbar" />
             </nav>
 
             <button

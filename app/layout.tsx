@@ -15,8 +15,38 @@ const ibmPlexSans = IBM_Plex_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Roommetrics Developments",
-  description: "Modern Websites for modern Businesses.",
+  title: "Roommetrics Developments - Professionelle Webentwicklung & Websites",
+  description: "Moderne Websites und Web-Anwendungen für Ihr Unternehmen. Webentwickler aus Österreich - React, Next.js, TypeScript. Kostenlose Beratung.",
+  keywords: ["Webentwickler", "Website erstellen", "Webentwicklung Österreich", "React Developer", "Next.js", "Landing Page", "Web Anwendung", "Responsive Design", "SEO"],
+  authors: [{ name: "Nico Zimmermann", url: "https://roommetrics.dev" }],
+  creator: "Roommetrics Developments",
+  publisher: "Roommetrics Developments",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "de_AT",
+    url: "https://roommetrics.dev",
+    title: "Roommetrics Developments - Professionelle Webentwicklung",
+    description: "Moderne Websites und Web-Anwendungen für Ihr Unternehmen. Webentwickler aus Österreich.",
+    siteName: "Roommetrics Developments",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Roommetrics Developments - Webentwicklung"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Roommetrics Developments - Professionelle Webentwicklung",
+    description: "Moderne Websites und Web-Anwendungen für Ihr Unternehmen.",
+    images: ["/og-image.jpg"]
+  },
+  alternates: {
+    canonical: "https://roommetrics.dev"
+  }
 };
 
 export default function RootLayout({
@@ -29,10 +59,10 @@ export default function RootLayout({
       <body
         className={`${ibmPlexSans.variable} antialiased`}
       >
-        <Navbar/>
+        <Navbar />
         {children}
-        <Analytics/>
-        <Footer/>
+        <Analytics />
+        <Footer />
       </body>
     </html>
   );

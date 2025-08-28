@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import { motion } from "motion/react";
-import Link from "next/link";
+import CalendlyButton from "@/Components/CalendlyButton";
 
 const Page = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -10,14 +10,13 @@ const Page = () => {
   const services = [
     {
       id: 1,
-      title: "Kostenloser Designvorschlag",
+      title: "Kostenloses Erstgespräch",
       description:
-        "Wir erstellen Ihnen einen unverbindlichen, maßgeschneiderten Designvorschlag für Ihr Projekt - komplett kostenlos.",
+        "In 15 Minuten besprechen wir, wie Ihre Website mehr Kunden gewinnt – unverbindlich und kostenlos.",
       features: [
-        "Individuelle Designkonzepte",
-        "Mockups & Wireframes",
-        "Branding-Vorschläge",
-        "Keine Verpflichtungen",
+        "Analyse Ihrer aktuellen Website oder Online-Präsenz",
+        "Persönliche Beratung für mehr Kundenanfragen",
+        "Individuelle Lösungsideen für Ihr Business",
       ],
       icon: (
         <svg
@@ -30,7 +29,7 @@ const Page = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"
+            d="M8 10h.01M12 10h.01M16 10h.01M9 16h6M21 12v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6M21 12H3"
           />
         </svg>
       ),
@@ -38,17 +37,17 @@ const Page = () => {
       bgGradient: "from-green-500/10 to-emerald-400/10",
       borderColor: "border-green-500/20",
       price: "Kostenlos",
-      duration: "2-3 Tage",
+      duration: "15 Minuten",
     },
     {
       id: 2,
-      title: "Landing Page Entwicklung",
+      title: "Landing Page Erstellung",
       description:
-        "Moderne, responsive Landing Pages die konvertieren. Perfekt optimiert für Performance und SEO.",
+        "Moderne Landing Pages, die Besucher in Kunden verwandeln – responsive, schnell und auf Ihr Business zugeschnitten.",
       features: [
-        "Responsive Design",
-        "SEO-Optimierung",
-        "Performance-Optimierung",
+        "Fokus auf Conversions & Anfragen",
+        "Mobile-Optimierung für Smartphones & Tablets",
+        "Einfaches, klares Design, das Ihre Marke stärkt",
       ],
       icon: (
         <svg
@@ -68,19 +67,19 @@ const Page = () => {
       gradient: "from-blue-500 to-cyan-400",
       bgGradient: "from-blue-500/10 to-cyan-400/10",
       borderColor: "border-blue-500/20",
-      price: "Ab €500",
+      price: "Ab €800",
       duration: "48 Stunden",
     },
     {
       id: 3,
-      title: "E-Commerce Webshop",
+      title: "Individuelle Web-Lösungen & Online Shops",
       description:
-        "Vollwertige Online-Shops mit sicherer Zahlungsabwicklung und modernem Design für maximale Conversion.",
+        "Maßgeschneiderte Websites oder Online Shops – alles, was Sie brauchen, um Ihr Business online erfolgreich zu machen.",
       features: [
-        "Stripe/PayPal Integration",
-        "Inventory Management",
-        "Bestellverwaltung",
-        "Mobile-First Design",
+        "Online Shop mit Zahlungsabwicklung",
+        "Buchungs- oder Reservierungssysteme",
+        "Design & Branding passend zu Ihrem Unternehmen",
+        "Optimiert für neue Kunden & Conversions",
       ],
       icon: (
         <svg
@@ -100,130 +99,39 @@ const Page = () => {
       gradient: "from-purple-500 to-pink-400",
       bgGradient: "from-purple-500/10 to-pink-400/10",
       borderColor: "border-purple-500/20",
-      price: "Ab €1.600",
-      duration: "2-4 Wochen",
-    },
-    {
-      id: 4,
-      title: "Admin Dashboards",
-      description:
-        "Leistungsstarke Admin-Panels für die einfache Verwaltung Ihrer Daten, Benutzer und Inhalte.",
-      features: [
-        "Benutzerverwaltung",
-        "Analytics & Reports",
-        "Content Management",
-        "Rolle & Permissions",
-      ],
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-          />
-        </svg>
-      ),
-      gradient: "from-orange-500 to-red-400",
-      bgGradient: "from-orange-500/10 to-red-400/10",
-      borderColor: "border-orange-500/20",
-      price: "Ab €1.200",
-      duration: "1-3 Wochen",
-    },
-    {
-      id: 5,
-      title: "Login & Auth Systeme",
-      description:
-        "Sichere Authentifizierung und Benutzerverwaltung mit modernsten Sicherheitsstandards.",
-      features: [
-        "OAuth Integration",
-        "2FA Unterstützung",
-        "Session Management",
-        "Password Security",
-      ],
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-          />
-        </svg>
-      ),
-      gradient: "from-indigo-500 to-purple-400",
-      bgGradient: "from-indigo-500/10 to-purple-400/10",
-      borderColor: "border-indigo-500/20",
-      price: "Ab €800",
-      duration: "1-2 Wochen",
-    },
-    {
-      id: 6,
-      title: "API Entwicklung",
-      description:
-        "Robuste REST APIs und Backend-Services für Ihre Anwendungen mit moderner Architektur.",
-      features: [
-        "RESTful APIs",
-        "Database Design",
-        "Third-party Integrations",
-        "API Documentation",
-      ],
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-          />
-        </svg>
-      ),
-      gradient: "from-teal-500 to-cyan-400",
-      bgGradient: "from-teal-500/10 to-cyan-400/10",
-      borderColor: "border-teal-500/20",
-      price: "Ab €900",
-      duration: "1-3 Wochen",
+      price: "Ab €1.500",
+      duration: "1–4 Wochen",
     },
   ];
+
 
   const processSteps = [
     {
       step: "01",
-      title: "Beratung & Analyse",
-      description: "Kostenlose Erstberatung und Analyse Ihrer Anforderungen",
+      title: "Persönliches Erstgespräch",
+      description:
+        "In einem unverbindlichen Gespräch klären wir Ihre Ziele, Wünsche und Anforderungen – so entsteht ein klarer Plan für Ihre neue Website.",
     },
     {
       step: "02",
-      title: "Designvorschlag",
-      description: "Unverbindlicher Designvorschlag mit Mockups und Konzept",
+      title: "Entwicklung & Umsetzung",
+      description:
+        "Wir setzen Ihre Website professionell um – modern, responsive und optimiert für neue Kunden. Währenddessen halten wir Sie über Fortschritte auf dem Laufenden.",
     },
     {
       step: "03",
-      title: "Entwicklung",
-      description: "Agile Entwicklung mit regelmäßigen Updates und Feedback",
+      title: "Feedback & Testphase",
+      description:
+        "Ihre Website wird auf einer Testseite live gestellt, damit Sie sie in Ruhe anschauen können. Sie geben Feedback und wir passen alles an, bis Sie vollkommen zufrieden sind.",
     },
     {
       step: "04",
-      title: "Launch & Support",
+      title: "Go-Live & Support",
       description:
-        "Go-Live Unterstützung und fortlaufender technischer Support",
+        "Nach Ihrem finalen Go geben wir die Website frei. Danach unterstützen wir Sie weiterhin, sorgen für reibungslosen Betrieb und helfen bei Updates oder Erweiterungen.",
     },
   ];
+
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -455,16 +363,6 @@ const Page = () => {
                         {service.duration}
                       </div>
                     </div>
-
-                    <Link href="/contact">
-                      <motion.button
-                        className={`px-4 py-2 bg-gradient-to-r ${service.gradient} text-white text-sm font-semibold rounded-lg hover:shadow-lg transition-all duration-300`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Anfragen
-                      </motion.button>
-                    </Link>
                   </div>
                 </div>
 
@@ -537,15 +435,7 @@ const Page = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-bold rounded-full hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Kostenlosen Designvorschlag erhalten
-              </motion.button>
-            </Link>
+            <CalendlyButton text="Kostenloses Erstgespräch buchen" />
           </div>
         </div>
       </motion.div>

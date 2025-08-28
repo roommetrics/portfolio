@@ -36,33 +36,33 @@ const Footer = () => {
     };
 
     const socialLinks = [
-        { 
-            icon: Instagram, 
-            href: "https://www.instagram.com/roommetrics.dev/", 
+        {
+            icon: Instagram,
+            href: "https://www.instagram.com/roommetrics.dev/",
             label: "Instagram",
             color: "hover:text-pink-500"
         },
-        { 
-            icon: Twitter, 
-            href: "https://x.com/roommetricsDev", 
+        {
+            icon: Twitter,
+            href: "https://x.com/roommetricsDev",
             label: "Twitter",
             color: "hover:text-blue-400"
         },
-        { 
-            icon: Linkedin, 
-            href: "https://www.linkedin.com/company/107447080/admin/dashboard/", 
+        {
+            icon: Linkedin,
+            href: "https://www.linkedin.com/company/107447080/admin/dashboard/",
             label: "LinkedIn",
             color: "hover:text-blue-600"
         },
-        { 
-            icon: Github, 
-            href: "https://github.com/roommetrics", 
+        {
+            icon: Github,
+            href: "https://github.com/roommetrics",
             label: "GitHub",
             color: "hover:text-gray-700"
         },
-        { 
-            icon: Mail, 
-            href: "mailto:office@roommetrics.dev", 
+        {
+            icon: Mail,
+            href: "mailto:office@roommetrics.dev",
             label: "Email",
             color: "hover:text-primary"
         }
@@ -83,10 +83,10 @@ const Footer = () => {
                         <Link href='/' className="inline-block group">
                             <div className="flex items-center space-x-3">
                                 <div className="relative">
-                                    <Image 
-                                        src="/Banner.png" 
-                                        alt="Roommetrics Logo" 
-                                        width={200} 
+                                    <Image
+                                        src="/Banner.png"
+                                        alt="Roommetrics Logo"
+                                        width={200}
                                         height={60}
                                         className="group-hover:scale-105 transition-transform duration-300"
                                     />
@@ -94,17 +94,17 @@ const Footer = () => {
                                 </div>
                             </div>
                         </Link>
-                        
+
                         <p className="text-gray-600 text-lg leading-relaxed max-w-md">
                             <span className="font-semibold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                                 Moderne Weblösungen
-                            </span> für innovative Unternehmen. 
+                            </span> für innovative Unternehmen.
                             Wir entwickeln digitale Erfahrungen, die begeistern und konvertieren.
                         </p>
 
                         {/* CTA */}
                         <div className="pt-4">
-                            <Link 
+                            <Link
                                 href="/contact"
                                 className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-purple-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300 group"
                             >
@@ -122,9 +122,9 @@ const Footer = () => {
                         </h3>
                         <div className="space-y-3">
                             {footerLinks.company.map(({ label, href }) => (
-                                <Link 
-                                    key={label} 
-                                    href={href} 
+                                <Link
+                                    key={label}
+                                    href={href}
                                     className="block text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 transform"
                                 >
                                     {label}
@@ -141,9 +141,9 @@ const Footer = () => {
                         </h3>
                         <div className="space-y-3">
                             {footerLinks.legal.map(({ label, href }) => (
-                                <Link 
-                                    key={label} 
-                                    href={href} 
+                                <Link
+                                    key={label}
+                                    href={href}
                                     className="block text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 transform"
                                 >
                                     {label}
@@ -160,9 +160,9 @@ const Footer = () => {
                         <div className="flex items-center space-x-4">
                             <span className="text-gray-600 font-medium mr-2">Folgen Sie uns:</span>
                             {socialLinks.map(({ icon: Icon, href, label, color }) => (
-                                <Link 
+                                <Link
                                     key={label}
-                                    href={href} 
+                                    href={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={`p-3 rounded-full bg-white shadow-md hover:shadow-lg transform hover:scale-110 transition-all duration-300 text-gray-600 ${color} group`}
@@ -176,7 +176,7 @@ const Footer = () => {
                         {/* Copyright */}
                         <div className="text-center lg:text-right">
                             <p className="text-gray-500 text-sm">
-                                © {new Date().getFullYear()} 
+                                © {new Date().getFullYear()}
                                 <span className="font-semibold text-gray-700"> Roommetrics Developments</span>
                             </p>
                             <p className="text-gray-400 text-xs mt-1">
@@ -190,9 +190,9 @@ const Footer = () => {
             {/* Scroll to Top Button */}
             <motion.button
                 initial={{ opacity: 0, scale: 0 }}
-                animate={{ 
-                    opacity: showScrollTop ? 1 : 0, 
-                    scale: showScrollTop ? 1 : 0 
+                animate={{
+                    opacity: showScrollTop ? 1 : 0,
+                    scale: showScrollTop ? 1 : 0
                 }}
                 transition={{ duration: 0.3 }}
                 onClick={scrollToTop}
