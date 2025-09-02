@@ -1,24 +1,38 @@
 'use client'
-import Image from "next/image"
-import Link from "next/link"
-import { Menu, X } from 'lucide-react'
+// Using plain anchors to avoid Link hydration issues in dev
+// inline icons to avoid external deps in client chunk
 import { useEffect, useState } from "react"
-import { AnimatePresence, motion } from "motion/react"
+import Link from 'next/link'
+import Image from 'next/image'
+// animations removed to avoid hydration/import issues
 import CalendlyButton from "./CalendlyButton"
 
 const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Dienstleistungen', href: '/services' },
+    { label: 'Kontakt', href: '/contact' },
     // { label: 'Projekte', href: '/projects' },
     { label: 'About', href: '/#about' }
 ]
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
+    const openMobile = () => {
+        setIsClosing(false);
+        setIsOpen(true);
+    }
+    const closeMobile = () => {
+        setIsClosing(true);
+        setTimeout(() => {
+            setIsOpen(false);
+            setIsClosing(false);
+        }, 240);
+    }
     const toggleMobile = () => {
-        setIsOpen(!isOpen);
+        if (isOpen) closeMobile(); else openMobile();
     }
 
     const handleScroll = () => {
@@ -37,10 +51,8 @@ const Navbar = () => {
     }, [])
 
     return (
-        <motion.header
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+        <header
+            suppressHydrationWarning
             className={`flex justify-between items-center py-4 px-6 lg:px-12 w-full fixed top-0 z-50 transition-all duration-300 ${isScrolled
                 ? 'bg-white/80 backdrop-blur-xl shadow-lg border-b border-primary/10'
                 : 'bg-transparent'
@@ -53,7 +65,8 @@ const Navbar = () => {
                         alt="Roommetrics Logo"
                         height={45}
                         width={45}
-                        className="hover:scale-110 transition-transform duration-300"
+                        className="h-[45px] w-[45px] hover:scale-110 transition-transform duration-300"
+                        priority={false}
                     />
                     <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-full blur-md opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -66,7 +79,7 @@ const Navbar = () => {
                 {navItems.map(({ label, href }) => (
                     <Link
                         key={label}
-                        href={href}
+                        href={href as string}
                         className={`relative hover:text-primary font-medium transition-all duration-300 group text-lg ${isScrolled ? 'text-black' : 'text-white'}`}
                     >
                         {label}
@@ -79,73 +92,80 @@ const Navbar = () => {
             <button
                 className="lg:hidden p-2 rounded-full bg-gradient-to-r from-primary to-purple-600 text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                 onClick={toggleMobile}
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
             >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
+                {isOpen ? (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                ) : (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                )}
             </button>
 
-            <AnimatePresence>
-                {isOpen && (
-                    <>
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
-                            onClick={() => setIsOpen(false)}
-                        />
-                        <motion.nav
-                            initial={{ x: "100%", opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: "100%", opacity: 0 }}
-                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 w-80 h-screen bg-white/95 backdrop-blur-xl shadow-2xl flex flex-col pt-20 px-8 z-50 border-l border-primary/10"
-                        >
+            {(isOpen || isClosing) && (
+                <>
+                    <div
+                        className={`fixed inset-0 bg-black/20 backdrop-blur-sm z-40 ${isClosing ? 'mobile-overlay-exit' : 'mobile-overlay-enter'}`}
+                        onClick={closeMobile}
+                    />
+                    <nav
+                        id="mobile-menu"
+                        className={`fixed top-0 right-0 w-80 h-screen bg-white/95 backdrop-blur-xl shadow-2xl flex flex-col pt-20 px-8 z-50 border-l border-primary/10 ${isClosing ? 'mobile-panel-exit' : 'mobile-panel-enter'}`}
+                    >
                             <button
-                                onClick={() => setIsOpen(false)}
+                                onClick={closeMobile}
                                 className="absolute top-6 right-6 p-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-all duration-300"
                             >
-                                <X size={20} />
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
                             </button>
 
                             <div className="space-y-6">
-                                {navItems.map(({ label, href }, index) => (
-                                    <motion.div
-                                        key={label}
-                                        initial={{ x: 50, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{ delay: index * 0.1 }}
-                                    >
+                                {navItems.map(({ label, href }) => (
+                                    <div key={label}>
                                         <Link
-                                            href={href}
-                                            onClick={() => setIsOpen(false)}
+                                            href={href as string}
+                                            onClick={closeMobile}
                                             className="block text-xl font-medium text-gray-700 hover:text-primary transition-colors duration-300 py-2 border-b border-gray-100 hover:border-primary/30"
                                         >
                                             {label}
                                         </Link>
-                                    </motion.div>
+                                    </div>
                                 ))}
 
-                                <motion.div
-                                    initial={{ x: 50, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ delay: navItems.length * 0.1 }}
-                                    className="pt-6"
-                                >
+                                <div className="pt-6">
                                     <Link
                                         href="/contact"
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={closeMobile}
                                         className="block w-full text-center px-6 py-3 bg-gradient-to-r from-primary to-purple-600 text-white rounded-full font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                                     >
                                         Kontakt aufnehmen
                                     </Link>
-                                </motion.div>
+                                </div>
                             </div>
-                        </motion.nav>
-                    </>
-                )}
-            </AnimatePresence>
-        </motion.header>
+                    </nav>
+                    <style jsx>{`
+                        @keyframes slideInRight { from { transform: translateX(100%); opacity: 0 } to { transform: translateX(0); opacity: 1 } }
+                        @keyframes slideOutRight { from { transform: translateX(0); opacity: 1 } to { transform: translateX(100%); opacity: 0 } }
+                        @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+                        @keyframes fadeOut { from { opacity: 1 } to { opacity: 0 } }
+                        .mobile-panel-enter { animation: slideInRight 220ms ease-out forwards; }
+                        .mobile-panel-exit { animation: slideOutRight 220ms ease-in forwards; }
+                        .mobile-overlay-enter { animation: fadeIn 200ms ease-out forwards; }
+                        .mobile-overlay-exit { animation: fadeOut 200ms ease-in forwards; }
+                    `}</style>
+                </>
+            )}
+        </header>
     )
 }
 

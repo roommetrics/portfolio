@@ -1,53 +1,20 @@
 "use client";
-import React, { useRef, useEffect } from "react";
-import { motion } from "motion/react";
+import React, { useEffect } from "react";
 import CalendlyButton from "@/Components/CalendlyButton";
 
 const Page = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-
-  const services = [
+  const packages = [
     {
       id: 1,
-      title: "Kostenloses Erstgespräch",
+      title: "Starter Website",
       description:
-        "In 15 Minuten besprechen wir, wie Ihre Website mehr Kunden gewinnt – unverbindlich und kostenlos.",
+        "Ideal als moderne Online-Visitenkarte – schnell startklar und klar strukturiert.",
       features: [
-        "Analyse Ihrer aktuellen Website oder Online-Präsenz",
-        "Persönliche Beratung für mehr Kundenanfragen",
-        "Individuelle Lösungsideen für Ihr Business",
-      ],
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 10h.01M12 10h.01M16 10h.01M9 16h6M21 12v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6M21 12H3"
-          />
-        </svg>
-      ),
-      gradient: "from-green-500 to-emerald-400",
-      bgGradient: "from-green-500/10 to-emerald-400/10",
-      borderColor: "border-green-500/20",
-      price: "Kostenlos",
-      duration: "15 Minuten",
-    },
-    {
-      id: 2,
-      title: "Landing Page Erstellung",
-      description:
-        "Moderne Landing Pages, die Besucher in Kunden verwandeln – responsive, schnell und auf Ihr Business zugeschnitten.",
-      features: [
-        "Fokus auf Conversions & Anfragen",
-        "Mobile-Optimierung für Smartphones & Tablets",
-        "Einfaches, klares Design, das Ihre Marke stärkt",
+        "Eine Seite mit allen wichtigen Infos (Start/Leistungen/Kontakt)",
+        "Modernes, individuelles Design passend zu Ihrer Marke",
+        "Auf dem Handy und bei Google gut sichtbar",
+        "Lieferzeit: in 48 Stunden online",
+        "Texte & Bilder später selbst pflegen (CMS optional +300 €)",
       ],
       icon: (
         <svg
@@ -64,23 +31,24 @@ const Page = () => {
           />
         </svg>
       ),
-      gradient: "from-blue-500 to-cyan-400",
-      bgGradient: "from-blue-500/10 to-cyan-400/10",
-      borderColor: "border-blue-500/20",
-      price: "Ab €800",
-      duration: "48 Stunden",
+      gradient: "from-emerald-500 to-teal-400",
+      bgGradient: "from-emerald-500/10 to-teal-400/10",
+      borderColor: "border-emerald-500/20",
+      price: "890 €",
     },
     {
-      id: 3,
-      title: "Individuelle Web-Lösungen & Online Shops",
+      id: 2,
+      title: "Business Website",
       description:
-        "Maßgeschneiderte Websites oder Online Shops – alles, was Sie brauchen, um Ihr Business online erfolgreich zu machen.",
+        "Unser Bestseller für die meisten Unternehmen – mehr Seiten, mehr Wirkung, leicht zu pflegen.",
       features: [
-        "Online Shop mit Zahlungsabwicklung",
-        "Buchungs- oder Reservierungssysteme",
-        "Design & Branding passend zu Ihrem Unternehmen",
-        "Optimiert für neue Kunden & Conversions",
+        "Bis zu 5 Seiten (Start, Leistungen, Über uns, Galerie, Kontakt)",
+        "Inhalte selbst ändern – kinderleichtes Redaktionssystem (CMS inklusive)",
+        "Sehr schnelle Ladezeiten und saubere Struktur",
+        "Suchmaschinen-Optimierung für bessere Auffindbarkeit",
+        "Schnell startklar: in 48 Stunden online",
       ],
+      tag: "Beliebtestes Paket",
       icon: (
         <svg
           className="w-8 h-8"
@@ -92,18 +60,83 @@ const Page = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"
+            d="M12 17l-5.878 3.09 1.122-6.545L2.488 8.91l6.561-.955L12 2l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z"
+          />
+        </svg>
+      ),
+      gradient: "from-blue-500 to-cyan-400",
+      bgGradient: "from-blue-500/10 to-cyan-400/10",
+      borderColor: "border-blue-500/40",
+      price: "1.390 €",
+      highlight: true,
+    },
+    {
+      id: 3,
+      title: "Premium Website",
+      description:
+        "Für Unternehmen mit besonderen Anforderungen – flexibel erweiterbar und mit individuellen Funktionen.",
+      features: [
+        "Mehr als 5 Seiten – viel Platz für Inhalte",
+        "Inhalte selbst pflegen – leistungsstarkes CMS inklusive",
+        "Individuelle Funktionen wie Reservierung, Blog oder Mitgliederbereich",
+        "Skalierbar, extrem schnell und stabil",
+        "Persönliches Onboarding und priorisierter Support",
+      ],
+      icon: (
+        <svg
+          className="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          {/* Gem/Crown style icon (single path for clarity) */}
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 3h12l3 4-9 14L3 7l3-4z"
           />
         </svg>
       ),
       gradient: "from-purple-500 to-pink-400",
       bgGradient: "from-purple-500/10 to-pink-400/10",
       borderColor: "border-purple-500/20",
-      price: "Ab €1.500",
-      duration: "1–4 Wochen",
+      price: "1.890 €",
     },
   ];
 
+  const maintenance = [
+    {
+      title: "Basic",
+      price: "29 €/Monat",
+      features: [
+        "Sicheres Hosting & SSL-Zertifikat",
+        "Regelmäßige technische Updates",
+        "Überwachung der Erreichbarkeit",
+      ],
+    },
+    {
+      title: "Pro",
+      price: "79 €/Monat",
+      features: [
+        "Monatlich bis 30 Min. Änderungswünsche inklusive",
+        "Aktive Sicherheitsüberwachung & schnelle Fehlerbehebung",
+        "Monatlicher SEO- & Leistungsreport",
+        "Performance-Optimierungen bei Bedarf",
+      ],
+    },
+  ];
+
+  const addons = [
+    { title: "Online-Reservierungsformular", price: "300 €" },
+    {
+      title: "Profi-Reservierungssystem",
+      price: "auf Anfrage",
+      description: "Resmio/OpenTable Integration",
+    },
+    { title: "Foto-Galerie mit CMS", price: "200 €" },
+  ];
 
   const processSteps = [
     {
@@ -132,76 +165,74 @@ const Page = () => {
     },
   ];
 
-
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in");
-          }
+    // Lazy-load GSAP only on this page and after mount
+    type RequestIdle = (cb: () => void) => number;
+    const w = window as Window & { requestIdleCallback?: RequestIdle };
+    const idle = (cb: () => void) => (w.requestIdleCallback ? w.requestIdleCallback(cb) : window.setTimeout(cb, 0));
+    idle(async () => {
+      const gsapMod = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      const gsap = gsapMod.default;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray<HTMLElement>(".fade-in").forEach((el) => {
+        gsap.from(el, {
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+          },
         });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (titleRef.current) observer.observe(titleRef.current);
-
-    const serviceCards = document.querySelectorAll(".service-card");
-    serviceCards.forEach((card) => observer.observe(card));
-
-    return () => observer.disconnect();
+      });
+    });
   }, []);
 
   return (
     <section
-      ref={sectionRef}
-      className="min-h-screen w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"
+      className="min-h-screen w-full pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"
+      role="region"
+      aria-labelledby="services-heading"
     >
+      {/* SEO: Offer & Breadcrumb JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Website erstellen lassen",
+            description: "Webentwicklung & Webdesign Pakete (Starter, Business, Premium) – SEO-optimiert, schnell, responsive.",
+            provider: { "@type": "Organization", name: "Roommetrics Developments", url: "https://roommetrics.dev" },
+            areaServed: { "@type": "Country", name: "Austria" },
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: "Website Pakete",
+              itemListElement: [
+                { "@type": "Offer", price: 890, priceCurrency: "EUR", name: "Starter Website" },
+                { "@type": "Offer", price: 1390, priceCurrency: "EUR", name: "Business Website" },
+                { "@type": "Offer", price: 1890, priceCurrency: "EUR", name: "Premium Website" }
+              ]
+            }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Startseite", item: "https://roommetrics.dev/" },
+              { "@type": "ListItem", position: 2, name: "Services", item: "https://roommetrics.dev/services" }
+            ]
+          })
+        }}
+      />
       <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(60px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slideInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        .animate-in {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .animate-in-left {
-          animation: slideInLeft 0.8s ease-out forwards;
-        }
-
-        .service-card {
-          opacity: 0;
-          transform: translateY(40px);
-          transition: all 0.6s ease-out;
-        }
-
-        .service-card.animate-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
         .floating-orb {
           position: absolute;
           width: 200px;
@@ -258,131 +289,155 @@ const Page = () => {
             background-position: 0% 50%;
           }
         }
+
+        /* Refined opening animation for page H1 */
+        .hero-title {
+          will-change: transform, opacity, filter;
+          animation: heroTitleIn 820ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
+        }
+        @keyframes heroTitleIn {
+          0% { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(6px); }
+          60% { opacity: 1; transform: translateY(0) scale(1.01); filter: blur(0); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-title { animation: none; opacity: 1; transform: none; filter: none; }
+        }
       `}</style>
 
-      <div className="floating-orb"></div>
-      <div className="floating-orb"></div>
+      <div className="floating-orb" />
+      <div className="floating-orb" />
 
-      <div
-        ref={titleRef}
-        className="text-center mb-12 sm:mb-16 lg:mb-20 opacity-0"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 uppercase leading-tight">
-            <span className="text-white/90">Unsere </span>
-            <br className="sm:hidden" />
-            <span className="gradient-text">Dienstleistungen</span>
-          </h2>
-          <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 rounded-full mx-auto"></div>
-          <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-3xl mx-auto">
-            <span className="font-bold text-white">
-              Roommetrics Developments
-            </span>{" "}
-            bietet maßgeschneiderte Webentwicklung von der ersten Idee bis zum
-            erfolgreichen Launch
-          </p>
-        </motion.div>
+      <div className="text-center mb-10 sm:mb-14 lg:mb-16 fade-in">
+        <h1 id="services-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-3 sm:mb-5 uppercase leading-tight hero-title">
+          <span className="gradient-text">Website erstellen lassen</span>
+          <br className="sm:hidden" />
+          <span className="text-white/90"> – Pakete & Preise</span>
+        </h1>
+        <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 rounded-full mx-auto" />
+        <p className="mt-5 text-base sm:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto">
+          Webentwicklung in Österreich für KMU: moderne, schnelle Websites – SEO‑optimiert, mobilfreundlich und klar auf Neukunden ausgelegt. Wählen Sie das passende Paket: Starter, Business oder Premium.
+        </p>
       </div>
 
-      {/* Services Grid */}
-      <div className="max-w-7xl mx-auto mb-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              className="service-card group relative"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
+      {/* Packages */}
+      <div className="max-w-7xl mx-auto mb-16 lg:mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+          {packages.map((pkg) => (
+            <div
+              key={pkg.id}
+              className={`fade-in group relative ${pkg.highlight ? "lg:scale-105" : ""}`}
             >
               <div
-                className={`relative h-full p-6 lg:p-8 bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm border ${service.borderColor} rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-opacity-60`}
+                className={`relative h-full p-5 md:p-6 lg:p-7 bg-gradient-to-br ${pkg.bgGradient} backdrop-blur-sm border ${pkg.borderColor} rounded-2xl overflow-hidden transition-all duration-500 ${pkg.highlight ? "ring-2 ring-blue-400/40" : ""}`}
               >
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-5">
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      backgroundImage: `radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3), transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3), transparent 50%)`,
-                    }}
-                  ></div>
-                </div>
+                {pkg.tag && (
+                  <span className="absolute top-4 right-4 text-xs font-semibold px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full text-white">
+                    {pkg.tag}
+                  </span>
+                )}
 
-                {/* Icon */}
                 <div
-                  className={`inline-flex p-4 bg-gradient-to-r ${service.gradient} rounded-xl text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  className={`inline-flex p-4 bg-gradient-to-r ${pkg.gradient} rounded-xl text-white mb-6`}
                 >
-                  {service.icon}
+                  {pkg.icon}
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10">
-                  <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 group-hover:text-white transition-colors duration-300">
-                    {service.title}
-                  </h3>
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">
+                  {pkg.title}
+                </h3>
 
-                  <p className="text-white/80 mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
+                <p className="text-white/80 mb-4 lg:mb-5 leading-relaxed text-sm sm:text-base">
+                  {pkg.description}
+                </p>
 
-                  {/* Features */}
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, featureIndex) => (
-                      <motion.li
-                        key={feature}
-                        className="flex items-center gap-2 text-white/70"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{
-                          duration: 0.4,
-                          delay: index * 0.1 + featureIndex * 0.05,
-                        }}
-                      >
-                        <div
-                          className={`w-1.5 h-1.5 bg-gradient-to-r ${service.gradient} rounded-full flex-shrink-0`}
-                        ></div>
-                        <span className="text-sm">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
+                <ul className="space-y-1.5 lg:space-y-1 mb-5 lg:mb-6">
+                  {pkg.features.map((feature, idx) => (
+                    <li
+                      key={feature}
+                      className={`${idx > 2 ? "hidden xl:flex" : "flex"} items-center gap-2 text-white/70`}
+                    >
+                      <div className={`w-1.5 h-1.5 bg-gradient-to-r ${pkg.gradient} rounded-full flex-shrink-0`} />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                  {/* Pricing & Duration */}
-                  <div className="flex justify-between items-center pt-4 border-t border-white/10">
-                    <div>
-                      <div
-                        className={`text-lg font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}
-                      >
-                        {service.price}
-                      </div>
-                      <div className="text-xs text-white/60">
-                        {service.duration}
-                      </div>
-                    </div>
+                <div className="flex items-center justify-between pt-3 lg:pt-4 border-t border-white/10">
+                  <div className={`text-lg font-bold bg-gradient-to-r ${pkg.gradient} bg-clip-text text-transparent`}>
+                    {pkg.price}
                   </div>
                 </div>
-
-                {/* Hover Effect */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}
-                ></div>
               </div>
-            </motion.div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Maintenance */}
+      <div className="max-w-5xl mx-auto mb-20 fade-in">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white text-center mb-3">
+          Wartung & Betreuung
+        </h3>
+        <p className="text-center text-white/70 mb-10">
+          Basic hält alles sicher am Laufen. Pro entwickelt Ihre Website aktiv weiter – mit Änderungen, Reports und Optimierungen.
+        </p>
+        <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
+          {maintenance.map((item) => (
+            <div
+              key={item.title}
+              className={`relative p-6 lg:p-8 bg-gradient-to-br from-slate-800/30 to-slate-700/30 border ${
+                item.title === "Pro" ? "border-blue-400/40 ring-1 ring-blue-400/30" : "border-white/10"
+              } rounded-2xl backdrop-blur-sm`}
+            >
+              {item.title === "Pro" && (
+                <span className="absolute -top-3 right-4 text-xs font-semibold px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full text-white shadow-md">
+                  Empfohlener Plan
+                </span>
+              )}
+              <h4 className="text-xl font-bold text-white mb-4">{item.title}</h4>
+              <ul className="space-y-2 mb-4">
+                {item.features.map((feature) => (
+                  <li key={feature} className="flex items-center gap-2 text-white/70">
+                    <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                    <span className="text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex items-baseline justify-between">
+                <div className="text-lg font-bold text-white">{item.price}</div>
+                {item.title === "Pro" && (
+                  <span className="text-xs text-blue-300">Mehr Leistung für wachsende Websites</span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Add-ons */}
+      <div className="max-w-5xl mx-auto mb-20 fade-in">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white text-center mb-10">
+          Add-ons
+        </h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {addons.map((addon) => (
+            <div
+              key={addon.title}
+              className="p-6 lg:p-8 bg-gradient-to-br from-slate-800/30 to-slate-700/30 border border-white/10 rounded-2xl backdrop-blur-sm text-center"
+            >
+              <h4 className="text-lg font-bold text-white mb-2">{addon.title}</h4>
+              {addon.description && (
+                <p className="text-white/70 text-sm mb-2">{addon.description}</p>
+              )}
+              <div className="text-lg font-bold text-white">{addon.price}</div>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Process Section */}
-      <motion.div
-        className="max-w-6xl mx-auto mb-20"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
+      <div className="max-w-6xl mx-auto mb-20 fade-in">
         <div className="text-center mb-12">
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Unser <span className="gradient-text">Entwicklungsprozess</span>
@@ -394,54 +449,39 @@ const Page = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {processSteps.map((step, index) => (
-            <motion.div
-              key={step.step}
-              className="relative text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-            >
+            <div key={step.step} className="relative text-center fade-in">
               <div className="relative mb-6">
                 <div className="w-16 h-16 mx-auto bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center text-white font-bold text-xl">
                   {step.step}
                 </div>
                 {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent"></div>
+                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent" />
                 )}
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">
-                {step.title}
-              </h4>
+              <h4 className="text-lg font-bold text-white mb-2">{step.title}</h4>
               <p className="text-white/70 text-sm">{step.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* CTA Section */}
-      <motion.div
-        className="text-center"
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-      >
+      <div className="text-center fade-in">
         <div className="max-w-4xl mx-auto p-8 lg:p-12 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-500/20 rounded-3xl">
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6">
             Bereit für Ihr nächstes Projekt?
           </h3>
           <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Kontaktieren Sie uns noch heute für eine kostenlose Beratung und
-            einen unverbindlichen Designvorschlag für Ihr Projekt.
+            Kontaktieren Sie uns noch heute für eine kostenlose Beratung und einen unverbindlichen Designvorschlag für Ihr Projekt.
           </p>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <CalendlyButton text="Kostenloses Erstgespräch buchen" />
           </div>
         </div>
-      </motion.div>
+      </div>
 
       <div className="mt-20 sm:mt-24 lg:mt-32 flex justify-center">
-        <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-full"></div>
+        <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-full" />
       </div>
     </section>
   );

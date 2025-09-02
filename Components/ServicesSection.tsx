@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'motion/react'
-import Link from 'next/link'
+// Using anchor to avoid dev Link hydration warnings
 import Image from 'next/image'
 
 const ServicesSection = () => {
@@ -19,11 +19,10 @@ const ServicesSection = () => {
           >
             <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 uppercase leading-tight'>
               <span className='bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent'>
-                Weblösungen
+                Webentwicklung & Website erstellen lassen
               </span>
-              <span className="text-white/90"> die mitdenken </span>
+              <span className="text-white/90"> in Österreich</span>
               <br className="sm:hidden" />
-
             </h2>
             <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto"></div>
           </motion.div>
@@ -65,14 +64,14 @@ const ServicesSection = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-blue-500/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Button text */}
-                    <Link href='/services'>
+                    <a href='/services'>
                       <span className="relative z-10 flex items-center gap-2">
                         Alle Services ansehen
                         <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </span>
-                    </Link>                    {/* Shine effect */}
+                    </a>                    {/* Shine effect */}
                     <div className="absolute inset-0 -top-full bg-gradient-to-b from-transparent via-white/20 to-transparent group-hover:top-full transition-all duration-700 transform rotate-12"></div>
                   </motion.button>
                 </motion.div>
@@ -86,7 +85,7 @@ const ServicesSection = () => {
               viewport={{ once: true }}
               className="flex-1 hidden lg:flex justify-center items-center"
             >
-              <Image src="/services-image.jpg" alt="Weblösungen" width={500} height={500} className="rounded-3xl shadow-2xl border border-white/10" />
+              <Image src="/services-image.jpg" alt="Website erstellen lassen in Österreich – Webentwicklung & Webdesign" width={500} height={500} className="rounded-3xl shadow-2xl border border-white/10" />
             </motion.div>
           </div>
         </div>

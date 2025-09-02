@@ -25,6 +25,32 @@ const Page = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Was kostet eine professionelle Website?",
+                acceptedAnswer: { "@type": "Answer", text: "Landing Pages starten ab 800 €. Individuelle Lösungen variieren je nach Anforderungen. Im kostenlosen Erstgespräch erhalten Sie ein genaues Angebot." }
+              },
+              {
+                "@type": "Question",
+                name: "Wie lange dauert die Erstellung?",
+                acceptedAnswer: { "@type": "Answer", text: "Eine Landing Page veröffentliche ich in der Regel in 48 Stunden als Testversion. Vollständige Business-Websites benötigen je nach Umfang 2–4 Wochen." }
+              },
+              {
+                "@type": "Question",
+                name: "Kann ich Inhalte selbst bearbeiten?",
+                acceptedAnswer: { "@type": "Answer", text: "Ja, auf Wunsch integriere ich ein benutzerfreundliches CMS, mit dem Sie Texte und Bilder einfach selbst aktualisieren können." }
+              }
+            ]
+          })
+        }}
+      />
 
       <div className="relative">
         {/* Background Effects */}

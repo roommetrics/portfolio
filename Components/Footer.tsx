@@ -88,6 +88,8 @@ const Footer = () => {
                                         alt="Roommetrics Logo"
                                         width={200}
                                         height={60}
+                                        priority={false}
+                                        loading="lazy"
                                         className="group-hover:scale-105 transition-transform duration-300"
                                     />
                                     <div className="absolute -inset-2 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -160,7 +162,7 @@ const Footer = () => {
                         <div className="flex items-center space-x-4">
                             <span className="text-gray-600 font-medium mr-2">Folgen Sie uns:</span>
                             {socialLinks.map(({ icon: Icon, href, label, color }) => (
-                                <Link
+                                <a
                                     key={label}
                                     href={href}
                                     target="_blank"
@@ -169,7 +171,7 @@ const Footer = () => {
                                     aria-label={label}
                                 >
                                     <Icon size={20} />
-                                </Link>
+                                </a>
                             ))}
                         </div>
 

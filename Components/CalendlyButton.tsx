@@ -1,39 +1,53 @@
-// components/CalendlyButton.js
+// components/CalendlyButton.tsx
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 
 type CalendlyButtonProps = {
     text: string;
     variant?: 'hero' | 'navbar' | 'default';
 };
 
+let calendlyPromise: Promise<void> | null = null;
+
+type CalendlyAPI = { showPopupWidget: (url: string) => void };
+type WindowWithCalendly = Window & typeof globalThis & { Calendly?: CalendlyAPI };
+
+function loadCalendly(): Promise<void> {
+    if (typeof window === 'undefined') return Promise.resolve();
+    if (calendlyPromise) return calendlyPromise;
+
+    calendlyPromise = new Promise<void>((resolve, reject) => {
+        const w = window as WindowWithCalendly;
+        if (w.Calendly) return resolve();
+        const script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('Failed to load Calendly'));
+        document.body.appendChild(script);
+    });
+    return calendlyPromise;
+}
+
 export default function CalendlyButton({ text, variant = 'default' }: CalendlyButtonProps) {
-    useEffect(() => {
-        // Stylesheet nur einmal einfügen
-        if (!document.getElementById('calendly-css')) {
-            const link = document.createElement('link');
-            link.id = 'calendly-css';
-            link.href = 'https://assets.calendly.com/assets/external/widget.css';
-            link.rel = 'stylesheet';
-            document.head.appendChild(link);
-        }
+    const [loading, setLoading] = useState(false);
+    const mountedRef = useRef(false);
 
-        // Script nur einmal einfügen
-        if (!document.getElementById('calendly-js')) {
-            const script = document.createElement('script');
-            script.id = 'calendly-js';
-            script.src = 'https://assets.calendly.com/assets/external/widget.js';
-            script.async = true;
-            document.body.appendChild(script);
-        }
-    }, []);
-
-    const openPopup = () => {
-        if (window.Calendly) {
-            window.Calendly.showPopupWidget('https://calendly.com/roommetrics/30min');
+    const openPopup = async () => {
+        try {
+            setLoading(true);
+            await loadCalendly();
+            (window as WindowWithCalendly).Calendly?.showPopupWidget('https://calendly.com/roommetrics/30min');
+        } finally {
+            if (mountedRef.current) setLoading(false);
         }
     };
+
+    React.useEffect(() => {
+        mountedRef.current = true;
+        return () => { mountedRef.current = false; };
+    }, []);
 
     // Style basierend auf Variante
     const getButtonStyles = () => {
@@ -73,6 +87,8 @@ export default function CalendlyButton({ text, variant = 'default' }: CalendlyBu
         <button
             onClick={openPopup}
             className={getButtonStyles()}
+            aria-busy={loading}
+            aria-label={loading ? 'Öffne Termin-Widget…' : text}
         >
             {/* Button background effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-blue-500/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -84,7 +100,7 @@ export default function CalendlyButton({ text, variant = 'default' }: CalendlyBu
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                 )}
-                <span className={variant === 'navbar' ? 'hidden sm:inline' : ''}>{text}</span>
+                <span className={variant === 'navbar' ? 'hidden sm:inline' : ''}>{loading ? 'Lade…' : text}</span>
                 {variant === 'navbar' && (
                     <svg className={getIconSize()} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
