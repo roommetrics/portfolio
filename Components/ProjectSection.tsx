@@ -1,6 +1,5 @@
 'use client'
 import React, { useRef, useEffect } from 'react'
-import { motion } from 'motion/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 import Image from 'next/image'
@@ -71,57 +70,15 @@ const ProjectSection = () => {
     projectRefs.current.forEach((ref) => {
       if (!ref) return
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ref,
-          start: "top 85%",
-          end: "bottom 15%",
-          toggleActions: "play none none reverse"
-        }
-      })
-
-      tl.fromTo(ref,
-        {
-          opacity: 0,
-          y: 100,
-          scale: 0.9
-        },
+      gsap.fromTo(ref,
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: "power3.out"
+          duration: 0.6,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: ref, start: 'top 85%', toggleActions: 'play none none reverse' }
         }
-      )
-
-      const image = ref.querySelector('.project-image')
-      if (image) {
-        gsap.to(image, {
-          yPercent: -20,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ref,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1
-          }
-        })
-      }
-
-      const techTags = ref.querySelectorAll('.tech-tag')
-      tl.fromTo(techTags,
-        {
-          opacity: 0,
-          x: -20
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power2.out"
-        }, "-=0.3"
       )
     })
 
@@ -131,111 +88,80 @@ const ProjectSection = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className='min-h-screen w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8'>
-      <div ref={titleRef} className="text-center mb-12 sm:mb-16 lg:mb-20">
-        <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 uppercase leading-tight'>
+    <section ref={sectionRef} className='w-full py-16 md:py-20 lg:py-28 px-4 sm:px-6 lg:px-8'>
+      <div ref={titleRef} className="text-center mb-12 sm:mb-14 md:mb-16">
+        <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 sm:mb-4 leading-[1.1] tracking-tight'>
           <span className="text-white/90">Ausgewählte </span>
-          <br className="sm:hidden" />
           <span className='bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent'>
             Projekte
           </span>
         </h2>
-        <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto"></div>
+        <div className="w-16 sm:w-20 lg:w-24 h-[3px] bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20 lg:space-y-32">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            ref={el => {
-              projectRefs.current[index] = el
-            }}
-            className={`flex flex-col lg:flex-row items-center gap-8 sm:gap-10 lg:gap-16 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
-          >
-            <div className="w-full lg:flex-1 relative group">
-              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-blue-400/20 p-0.5 sm:p-1">
-                <div className="overflow-hidden rounded-lg sm:rounded-xl">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={800}
-                    height={500}
-                    className="project-image w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          {projects.map((project, index) => {
+            const tags = project.tech.slice(0, 3)
+            const extra = project.tech.length - tags.length
+            const desc = project.description.length > 150 ? project.description.slice(0, 150) + '…' : project.description
+            return (
+              <div
+                key={project.id}
+                ref={el => { projectRefs.current[index] = el }}
+                className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm hover:bg-white/7 transition-colors"
+              >
+                <div className="relative overflow-hidden">
+                  <div className="relative aspect-[16/10] w-full">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div className="p-5 sm:p-6 space-y-3">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white">{project.title}</h3>
+                  <p className="text-sm sm:text-base text-white/80 leading-relaxed">{desc}</p>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {tags.map((t) => (
+                      <span key={t} className="tech-tag px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-white/80">{t}</span>
+                    ))}
+                    {extra > 0 && (
+                      <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-white/70">+{extra}</span>
+                    )}
+                  </div>
+
+                  <div className="pt-2">
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-blue-500 text-white text-sm font-medium hover:shadow-lg transition-all"
+                        aria-label={`Projekt ${project.title} live ansehen`}
+                      >
+                        Live ansehen
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <span className="inline-flex items-center px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm">Case demnächst</span>
+                    )}
+                  </div>
+                </div>
               </div>
-
-              <div className="hidden sm:block absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-6 sm:w-8 h-6 sm:h-8 bg-primary rounded-full animate-pulse"></div>
-              <div className="hidden sm:block absolute -bottom-2 sm:-bottom-4 -left-2 sm:-left-4 w-4 sm:w-6 h-4 sm:h-6 bg-blue-400 rounded-full animate-pulse delay-1000"></div>
-            </div>
-
-            <div className="w-full lg:flex-1 space-y-4 sm:space-y-6 text-center lg:text-left px-2 sm:px-0">
-              <motion.div
-                className="space-y-3 sm:space-y-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
-                  {project.title}
-                </h3>
-                <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto lg:mx-0"></div>
-              </motion.div>
-
-              <motion.p
-                className="text-base sm:text-lg lg:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto lg:mx-0"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                {project.description}
-              </motion.p>
-
-              <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="tech-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm hover:bg-primary/20 transition-colors duration-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-2">
-                {project.url ? (
-                  <motion.a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary to-blue-400 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/25 text-sm sm:text-base"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                      Projekt ansehen
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </motion.a>
-                ) : (
-                  <span className="px-6 sm:px-8 py-3 sm:py-4 bg-gray-700 text-gray-300 font-bold rounded-full text-sm sm:text-base">
-                    Kein Link verfügbar
-                  </span>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        ))}
+            )
+          })}
+        </div>
       </div>
 
-      <div className="mt-20 sm:mt-24 lg:mt-32 flex justify-center">
+      <div className="mt-16 sm:mt-20 lg:mt-24 flex justify-center">
         <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
       </div>
     </section>

@@ -22,10 +22,10 @@ const Footer = () => {
 
     const footerLinks = {
         company: [
-            { label: 'Home', href: '/' },
-            { label: 'Dienstleistungen', href: '/services' },
+            { label: 'Start', href: '/' },
+            { label: 'Leistungen', href: '/services' },
             // { label: 'Projekte', href: '/projects' },
-            { label: 'About', href: '/#about' }
+            { label: 'Über mich', href: '/about' }
         ],
         legal: [
             { label: 'Kontakt', href: '/contact' },
@@ -69,14 +69,14 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="relative bg-gradient-to-br from-gray-50 via-white to-purple-50/30 border-t border-gray-200/50">
+        <footer className="relative bg-gradient-to-br from-gray-900 via-gray-900 to-black border-t border-white/10 text-white">
             {/* Decorative background elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-500/5 to-primary/5 rounded-full blur-3xl"></div>
+                <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-full blur-3xl opacity-30"></div>
+                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-primary/10 rounded-full blur-3xl opacity-30"></div>
             </div>
 
-            <div className="relative container mx-auto px-6 lg:px-12 py-16">
+            <div className="relative container mx-auto max-w-7xl px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8">
                     {/* Logo & Description */}
                     <div className="lg:col-span-2 space-y-6">
@@ -92,13 +92,13 @@ const Footer = () => {
                                         loading="lazy"
                                         className="group-hover:scale-105 transition-transform duration-300"
                                     />
-                                    <div className="absolute -inset-2 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                             </div>
                         </Link>
 
-                        <p className="text-gray-600 text-lg leading-relaxed max-w-md">
-                            <span className="font-semibold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+                        <p className="text-white/80 text-lg leading-relaxed max-w-md">
+                            <span className="font-semibold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
                                 Moderne Weblösungen
                             </span> für innovative Unternehmen.
                             Wir entwickeln digitale Erfahrungen, die begeistern und konvertieren.
@@ -118,7 +118,7 @@ const Footer = () => {
 
                     {/* Navigation Links */}
                     <div className="space-y-6">
-                        <h3 className="font-bold text-lg text-gray-900 relative">
+                        <h3 className="font-bold text-lg text-white relative">
                             Navigation
                             <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-purple-500"></span>
                         </h3>
@@ -127,7 +127,7 @@ const Footer = () => {
                                 <Link
                                     key={label}
                                     href={href}
-                                    className="block text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 transform"
+                                    className="block text-white/80 hover:text-white transition-colors duration-300 hover:translate-x-1 transform"
                                 >
                                     {label}
                                 </Link>
@@ -137,7 +137,7 @@ const Footer = () => {
 
                     {/* Legal Links */}
                     <div className="space-y-6">
-                        <h3 className="font-bold text-lg text-gray-900 relative">
+                        <h3 className="font-bold text-lg text-white relative">
                             Rechtliches
                             <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-purple-500"></span>
                         </h3>
@@ -146,7 +146,7 @@ const Footer = () => {
                                 <Link
                                     key={label}
                                     href={href}
-                                    className="block text-gray-600 hover:text-primary transition-colors duration-300 hover:translate-x-1 transform"
+                                    className="block text-white/80 hover:text-white transition-colors duration-300 hover:translate-x-1 transform"
                                 >
                                     {label}
                                 </Link>
@@ -156,18 +156,18 @@ const Footer = () => {
                 </div>
 
                 {/* Social Media & Bottom Section */}
-                <div className="mt-16 pt-8 border-t border-gray-200/50">
+                <div className="mt-16 pt-8 border-t border-white/10">
                     <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
                         {/* Social Links */}
                         <div className="flex items-center space-x-4">
-                            <span className="text-gray-600 font-medium mr-2">Folgen Sie uns:</span>
+                            <span className="text-white/70 font-medium mr-2">Folgen Sie uns:</span>
                             {socialLinks.map(({ icon: Icon, href, label, color }) => (
                                 <a
                                     key={label}
                                     href={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`p-3 rounded-full bg-white shadow-md hover:shadow-lg transform hover:scale-110 transition-all duration-300 text-gray-600 ${color} group`}
+                                    className={`p-3 rounded-full bg-white/10 hover:bg-white/15 transform hover:scale-110 transition-all duration-300 text-white/90 ${color} group`}
                                     aria-label={label}
                                 >
                                     <Icon size={20} />
@@ -177,11 +177,11 @@ const Footer = () => {
 
                         {/* Copyright */}
                         <div className="text-center lg:text-right">
-                            <p className="text-gray-500 text-sm">
+                            <p className="text-white/70 text-sm">
                                 © {new Date().getFullYear()}
-                                <span className="font-semibold text-gray-700"> Roommetrics Developments</span>
+                                <span className="font-semibold text-white/90"> Roommetrics Developments</span>
                             </p>
-                            <p className="text-gray-400 text-xs mt-1">
+                            <p className="text-white/50 text-xs mt-1">
                                 Alle Rechte vorbehalten
                             </p>
                         </div>

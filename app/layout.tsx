@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/next';
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import ScrollAnimations from "@/Components/ScrollAnimations";
 
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -16,7 +17,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   title: "Roommetrics Developments – Website erstellen lassen & Webentwickler in Österreich",
-  description: "Website erstellen lassen in Österreich: Moderne, schnelle Websites und Web-Anwendungen. Webentwickler & Webdesign Agentur für KMU – Next.js, TypeScript, SEO, Performance.",
+  description: "Website erstellen lassen in Österreich: Moderne, schnelle Websites und Web-Anwendungen. Webentwickler & Webdesign für KMU – Next.js, TypeScript, SEO, Performance.",
   keywords: [
     "Website erstellen",
     "Website erstellen lassen",
@@ -102,6 +103,8 @@ export default function RootLayout({
       <body
         className={`${ibmPlexSans.variable} antialiased`}
       >
+        {/* Global GSAP scroll animations (attribute-driven) */}
+        <ScrollAnimations />
         <Navbar />
         {children}
         <script

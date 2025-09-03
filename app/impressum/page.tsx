@@ -10,17 +10,17 @@ const Impressum = () => {
                 <section className='min-h-screen w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8'>
                     <div className="max-w-4xl mx-auto">
                         {/* Title Section */}
-                        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+                        <div className="text-center mb-12 sm:mb-16 lg:mb-20 fade-in">
                             <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 uppercase leading-tight'>
                                 <span className='bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent'>
                                     Impressum
                                 </span>
                             </h1>
-                            <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto"></div>
+                            <div data-underline className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto"></div>
                         </div>
 
                         {/* Content */}
-                        <div className="space-y-8 sm:space-y-12">
+                        <div data-stagger className="space-y-8 sm:space-y-12">
                             {/* Legal Notice */}
                             <div className="text-center mb-8">
                                 <p className="text-sm sm:text-base text-white/60 italic">

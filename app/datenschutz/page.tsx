@@ -10,17 +10,17 @@ const Datenschutz = () => {
                 <section className='min-h-screen w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8'>
                     <div className="max-w-4xl mx-auto">
                         {/* Title Section */}
-                        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+                        <div className="text-center mb-12 sm:mb-16 lg:mb-20 fade-in">
                             <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 uppercase leading-tight'>
                                 <span className='bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent'>
                                     Datenschutz
                                 </span>
                             </h1>
-                            <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto"></div>
+                            <div data-underline className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto"></div>
                         </div>
 
                         {/* Content */}
-                        <div className="space-y-8 sm:space-y-12">
+                        <div data-stagger className="space-y-8 sm:space-y-12">
                             {/* Einleitung */}
                             <div className="bg-gradient-to-br from-primary/10 to-blue-400/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-10 border border-primary/20 backdrop-blur-sm">
                                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 sm:mb-6">

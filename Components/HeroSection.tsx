@@ -35,7 +35,7 @@ const HeroSection = () => {
     const idle = (cb: () => void) => (w.requestIdleCallback ? w.requestIdleCallback(cb) : window.setTimeout(cb, 0));
     idle(async () => {
       const gsapMod = await import('gsap');
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      const { ScrollTrigger } = await import('gsap/dist/ScrollTrigger');
       const gsap = gsapMod.default;
       gsap.registerPlugin(ScrollTrigger);
 
@@ -111,7 +111,7 @@ const HeroSection = () => {
         </h1>
 
         {/* Kundennutzen */}
-        <p className='text-base sm:text-lg md:text-xl lg:text-xl font-light leading-relaxed text-white/80 max-w-2xl hero-reveal' style={{ '--d': '120ms' } as React.CSSProperties}>
+        <p className='text-base sm:text-lg md:text-xl lg:text-xl font-light leading-relaxed text-white/80 max-w-2xl hero-reveal' style={{ '--d': '1000ms' } as React.CSSProperties}>
           Moderne, schnelle Websites für KMU. In 48 Stunden online, mobil‑optimiert und SEO‑ready. Unverbindliche Erstberatung inklusive.
         </p>
 

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import CalendlyButton from "@/Components/CalendlyButton";
 
 const Page = () => {
@@ -165,30 +165,7 @@ const Page = () => {
     },
   ];
 
-  useEffect(() => {
-    // Lazy-load GSAP only on this page and after mount
-    type RequestIdle = (cb: () => void) => number;
-    const w = window as Window & { requestIdleCallback?: RequestIdle };
-    const idle = (cb: () => void) => (w.requestIdleCallback ? w.requestIdleCallback(cb) : window.setTimeout(cb, 0));
-    idle(async () => {
-      const gsapMod = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      const gsap = gsapMod.default;
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.utils.toArray<HTMLElement>(".fade-in").forEach((el) => {
-        gsap.from(el, {
-          y: 50,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 80%",
-          },
-        });
-      });
-    });
-  }, []);
+  // Page uses global attribute-driven animations in Components/ScrollAnimations
 
   return (
     <section

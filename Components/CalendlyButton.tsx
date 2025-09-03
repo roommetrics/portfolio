@@ -10,7 +10,10 @@ type CalendlyButtonProps = {
 
 let calendlyPromise: Promise<void> | null = null;
 
-type CalendlyAPI = { showPopupWidget: (url: string) => void };
+type CalendlyAPI = {
+    initPopupWidget: (opts: { url: string }) => void;
+    showPopupWidget?: (url: string) => void;
+};
 type WindowWithCalendly = Window & typeof globalThis & { Calendly?: CalendlyAPI };
 
 function loadCalendly(): Promise<void> {
@@ -20,10 +23,33 @@ function loadCalendly(): Promise<void> {
     calendlyPromise = new Promise<void>((resolve, reject) => {
         const w = window as WindowWithCalendly;
         if (w.Calendly) return resolve();
+
+        // Ensure Calendly CSS is present
+        const existingCss = document.querySelector(
+            'link[href="https://assets.calendly.com/assets/external/widget.css"]'
+        ) as HTMLLinkElement | null;
+        let cssLoaded = !!existingCss;
+
+        if (!existingCss) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://assets.calendly.com/assets/external/widget.css';
+            link.onload = () => { cssLoaded = true; };
+            link.onerror = () => { /* non-blocking */ };
+            document.head.appendChild(link);
+        }
+
         const script = document.createElement('script');
         script.src = 'https://assets.calendly.com/assets/external/widget.js';
         script.async = true;
-        script.onload = () => resolve();
+        script.onload = () => {
+            // If CSS is still loading, wait a tick to be safe
+            if (!cssLoaded) {
+                setTimeout(() => resolve(), 0);
+            } else {
+                resolve();
+            }
+        };
         script.onerror = () => reject(new Error('Failed to load Calendly'));
         document.body.appendChild(script);
     });
@@ -38,7 +64,13 @@ export default function CalendlyButton({ text, variant = 'default' }: CalendlyBu
         try {
             setLoading(true);
             await loadCalendly();
-            (window as WindowWithCalendly).Calendly?.showPopupWidget('https://calendly.com/roommetrics/30min');
+            const calendly = (window as WindowWithCalendly).Calendly;
+            if (calendly?.initPopupWidget) {
+                calendly.initPopupWidget({ url: 'https://calendly.com/roommetrics/30min' });
+            } else {
+                // Fallback to legacy API if present
+                calendly?.showPopupWidget?.('https://calendly.com/roommetrics/30min');
+            }
         } finally {
             if (mountedRef.current) setLoading(false);
         }

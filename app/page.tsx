@@ -7,6 +7,7 @@ import HeroSection from '@/Components/HeroSection';
 import ProjectSection from '@/Components/ProjectSection';
 import ServicesSection from '@/Components/ServicesSection';
 import { organizationSchema, localBusinessSchema, serviceSchema } from '@/lib/schemas';
+import BackgroundParallax from '@/Components/BackgroundParallax';
 
 const Page = () => {
 
@@ -53,9 +54,8 @@ const Page = () => {
       />
 
       <div className="relative">
-        {/* Background Effects */}
-        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
-        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent"></div>
+        {/* Background Effects with Parallax */}
+        <BackgroundParallax />
 
         <main className='container mx-auto max-w-7xl px-6 lg:px-8 relative z-10'>
           <HeroSection />

@@ -21,13 +21,13 @@ const AboutSection = () => {
   ]
 
   const skills = [
-    "React & Next.js",
-    "Node.js & Express",
-    "Supabase",
-    "Tailwind CSS",
-    "TypeScript",
-    "Zahlungsintegration",
-    "SEO Optimierung",
+    "Klare Kommunikation",
+    "Fester Ansprechpartner",
+    "Transparente Preise",
+    "Schnelle Umsetzung",
+    "Termintreue",
+    "Einfache Pflege",
+    "Auf Wunsch Betreuung",
   ]
 
   const values = [
@@ -182,22 +182,21 @@ const AboutSection = () => {
   }, [])
 
   return (
-    <section id='about' ref={sectionRef} className='min-h-screen w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8'>
+    <section id='about' ref={sectionRef} className='w-full py-16 md:py-20 lg:py-28 px-4 sm:px-6 lg:px-8'>
       {/* Title */}
-      <div ref={titleRef} className="text-center mb-12 sm:mb-16 lg:mb-20">
-        <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 uppercase leading-tight'>
+      <div ref={titleRef} className="text-center mb-12 sm:mb-14 md:mb-16">
+        <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 sm:mb-4 leading-[1.1] tracking-tight'>
           <span className="text-white/90">Über </span>
-          <br className="sm:hidden" />
-          <span className='bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 bg-clip-text text-transparent'>
+          <span className='bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent'>
             Roommetrics
           </span>
         </h2>
-        <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mx-auto"></div>
+        <div className="w-16 sm:w-20 lg:w-24 h-[3px] bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto"></div>
       </div>
 
       <div className="max-w-7xl mx-auto">
         {/* Profile Section */}
-        <div className="flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-20 mb-16 sm:mb-20 lg:mb-32">
+        <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-14 lg:gap-16 mb-14 sm:mb-16 lg:mb-24">
           <div ref={profileRef} className="w-full lg:flex-1 relative group">
             <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 p-0.5 sm:p-1 max-w-md mx-auto lg:mx-0">
               <div className="overflow-hidden rounded-lg sm:rounded-xl">
@@ -222,9 +221,9 @@ const AboutSection = () => {
               <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
                 Full Stack Web Entwickler
                 <br />
-                <span className="text-blue-500">für KMUs</span>
+                <span className="text-primary">für KMUs</span>
               </h3>
-              <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mx-auto lg:mx-0"></div>
+              <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto lg:mx-0"></div>
             </motion.div>
 
             <motion.div
@@ -239,11 +238,17 @@ const AboutSection = () => {
               <p className="text-base sm:text-lg text-white/70 leading-relaxed">
                 Mein Ziel ist es, Unternehmen zu helfen, ihren Online-Auftritt zu perfektionieren und Prozesse zu digitalisieren. Mit modernen Technologien und einem Fokus auf Design entwickle ich Webseiten und digitale Lösungen, die Kunden gewinnen, Prozesse vereinfachen und Ihr Business voranbringen.
               </p>
+              <div className="pt-2">
+                <a href="/about" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">
+                  Mehr über mich
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 7l5 5-5 5"/><path d="M6 12h12"/></svg>
+                </a>
+              </div>
             </motion.div>
 
-            {/* Skills */}
+            {/* Benefits statt Technik */}
             <div className="space-y-4">
-              <h4 className="text-lg sm:text-xl font-bold text-white">Technologien</h4>
+              <h4 className="text-lg sm:text-xl font-bold text-white">Was Ihnen wichtig ist</h4>
               <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start">
                 {skills.map((skill, index) => (
                   <span
@@ -251,7 +256,7 @@ const AboutSection = () => {
                     ref={el => {
                       skillRefs.current[index] = el as HTMLDivElement | null
                     }}
-                    className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm hover:bg-blue-500/20 transition-colors duration-300"
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-blue-300 border border-primary/20 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm hover:bg-primary/15 transition-colors duration-300"
                   >
                     {skill}
                   </span>
@@ -262,7 +267,7 @@ const AboutSection = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-16 sm:mb-20 lg:mb-32">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-14 sm:mb-16 lg:mb-24">
           {stats.map((stat, index) => (
             <div
               key={stat.label}
@@ -271,11 +276,11 @@ const AboutSection = () => {
               }}
               className="relative group"
             >
-              <div className="bg-gradient-to-br from-blue-500/10 to-cyan-400/10 backdrop-blur-sm border border-blue-500/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:from-blue-500/20 hover:to-cyan-400/20 transition-all duration-500 hover:scale-105">
+              <div className="bg-gradient-to-br from-primary/10 to-blue-500/10 backdrop-blur-sm border border-primary/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:from-primary/15 hover:to-blue-500/15 transition-all duration-500 hover:scale-[1.02]">
                 <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">{stat.icon}</div>
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400 mb-1 sm:mb-2">{stat.number}</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-300 mb-1 sm:mb-2">{stat.number}</div>
                 <div className="text-xs sm:text-sm text-white/70 font-medium">{stat.label}</div>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-400/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </div>
           ))}
@@ -287,7 +292,7 @@ const AboutSection = () => {
             <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">
               Warum mit Roommetrics arbeiten?
             </h3>
-            <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mx-auto"></div>
+            <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
@@ -299,7 +304,7 @@ const AboutSection = () => {
                 }}
                 className="group relative"
               >
-                <div className="bg-gradient-to-br from-blue-500/10 to-cyan-400/10 backdrop-blur-sm border border-blue-500/20 rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:from-blue-500/20 hover:to-cyan-400/20 transition-all duration-500 hover:scale-105">
+                <div className="bg-gradient-to-br from-primary/10 to-blue-500/10 backdrop-blur-sm border border-primary/20 rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:from-primary/15 hover:to-blue-500/15 transition-all duration-500 hover:scale-[1.02]">
                   <div className="flex items-start gap-4 sm:gap-6">
                     <div className="text-3xl sm:text-4xl flex-shrink-0">{value.icon}</div>
                     <div className="space-y-2 sm:space-y-3">
@@ -307,7 +312,7 @@ const AboutSection = () => {
                       <p className="text-sm sm:text-base text-white/70 leading-relaxed">{value.description}</p>
                     </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-400/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               </div>
             ))}
@@ -315,7 +320,7 @@ const AboutSection = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 sm:mt-20 lg:mt-32 text-center">
+        <div className="mt-14 sm:mt-16 lg:mt-20 text-center">
           <motion.div
             className="space-y-6 sm:space-y-8"
             initial={{ opacity: 0, y: 30 }}
@@ -330,7 +335,7 @@ const AboutSection = () => {
         </div>
       </div>
 
-      <div className="mt-20 sm:mt-24 lg:mt-32 flex justify-center">
+      <div className="mt-16 sm:mt-20 lg:mt-24 flex justify-center">
         <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-full"></div>
       </div>
     </section>
