@@ -18,7 +18,7 @@ const FAQSection = () => {
         },
         {
             question: "Was kostet eine professionelle Website?",
-            answer: "Landing Pages starten ab 800€, Individidelle Web Lösungen variiren je nach Anforderungen. Im kostenlosen Erstgespräch erstelle ich Ihnen ein angepasstes Angebot."
+            answer: "Landing Pages starten ab 890€, Individidelle Web Lösungen variiren je nach Anforderungen. Im kostenlosen Erstgespräch erstelle ich Ihnen ein angepasstes Angebot."
         },
         {
             question: "Erhalte ich auch nach der Fertigstellung Support?",

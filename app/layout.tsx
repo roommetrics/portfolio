@@ -99,7 +99,7 @@ export default function RootLayout({
     ],
   } as const;
   return (
-    <html lang="de">
+    <html lang="de" className="scroll-smooth">
       <body
         className={`${ibmPlexSans.variable} antialiased`}
       >

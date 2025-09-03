@@ -49,6 +49,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
       images: ['/Banner.png'],
     }),
+    entry('/about', 'app/about/page.tsx', {
+      changeFrequency: 'monthly',
+      priority: 0.9,
+      images: ['/Banner.png'],
+    }),
     entry('/services', 'app/services/page.tsx', {
       changeFrequency: 'monthly',
       priority: 0.9,
