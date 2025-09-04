@@ -59,10 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       images: ['/services-image.jpg'],
     }),
-    entry('/projects', 'app/projects/page.tsx', {
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    }),
     entry('/contact', 'app/contact/page.tsx', {
       changeFrequency: 'monthly',
       priority: 0.7,
